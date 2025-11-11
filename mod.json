@@ -1,0 +1,14 @@
+{
+   "id": "llon",
+   "name": "Balatro Producciones",
+   "display_name": "Balatro Producciones",
+   "author": ["Kahn"],
+   "description": "Mod creado para Llon Miranda",
+   "prefix": "bp",
+   "main_file": "main.lua",
+   "priority": 0,
+   "badge_colour": "#7DDA58",
+   "badge_text_colour": "#DFFFD3",
+   "version": "1.0.0",
+   "dependencies": ["Steamodded"] 
+}
