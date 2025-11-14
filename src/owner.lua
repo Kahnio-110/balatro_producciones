@@ -380,6 +380,9 @@ SMODS.Consumable:take_ownership(
                     trigger = 'after',
                     delay = 0.4,
                     func = function()
+                        card_eval_status_text(used_card, 'extra', nil, nil, nil,
+                            { message = "-" .. tostring(1) .. " Hand Size", colour = G.C.RED })
+                        G.hand:change_size(-1)
                         return true
                     end
                 }))

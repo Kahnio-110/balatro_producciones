@@ -1686,15 +1686,16 @@ SMODS.Joker {
     key = "emoji",
     config = {
         extra = {
-            Tarot = 0
+            duracion = 42,
+            ignore = 0
         }
     },
     loc_txt = {
-        ['name'] = 'Emoji Movie',
+        ['name'] = 'Emoji',
         ['text'] = {
-            [1] = 'Cuando se juega una {C:attention}figura{} con',
-            [2] = '{C:gold}sello dorado{} crea una carta de',
-            [3] = '{C:tarot}tarot{} con un humano en su {C:attention}arte{}'
+            [1] = 'Al jugar {C:attention}42{} figuras crea',
+            [2] = '3 {C:common}caras sonrientes{} {C:dark_edition}negativas{}',
+            [3] = '{C:inactive}({C:attention}#1#{}{C:inactive} figuras faltantes){}'
         },
         ['unlock'] = {
             [1] = 'Unlocked by default.'
@@ -1717,34 +1718,91 @@ SMODS.Joker {
     discovered = true,
     atlas = 'emoji',
 
+    loc_vars = function(self, info_queue, card)
+        return { vars = { card.ability.extra.duracion } }
+    end,
+
+
     calculate = function(self, card, context)
         if context.individual and context.cardarea == G.play then
-            if (context.other_card.seal == "Gold" and context.other_card:is_face()) then
-                local created_consumable = false
-                if #G.consumeables.cards + G.GAME.consumeable_buffer < G.consumeables.config.card_limit then
-                    created_consumable = true
-                    G.GAME.consumeable_buffer = G.GAME.consumeable_buffer + 1
-                    G.E_MANAGER:add_event(Event({
-                        func = function()
-                            local random_key = pseudorandom_element(
-                                {
-                                    "c_fool", "c_magician", "c_high_priestess", "c_empress", "c_emperor",
-                                    "c_heirophant", "c_lovers", "c_chariot", "c_strength", "c_justice",
-                                    "c_hermit", "c_hanged_man", "c_temperance", "c_star", "c_sun", "c_judgement",
-                                    "c_world", "c_death"
-                                },
-                                "seed")
-                            local joker_card = SMODS.add_card({
-                                set = 'Tarot',
-                                key = random_key
-                            })
-                            return true
+            if (context.other_card:is_face() and card.ability.extra.duracion > 0) then
+                card.ability.extra.duracion = math.max(0, (card.ability.extra.duracion) - 1)
+            elseif (context.other_card:is_face() and card.ability.extra.duracion == 0 and not ((G.GAME.pool_flags.bp_poly or false))) then
+                local created_joker = true
+                G.E_MANAGER:add_event(Event({
+                    func = function()
+                        local joker_card = SMODS.add_card({ set = 'Joker', key = 'j_smiley' })
+                        if joker_card then
+                            joker_card:set_edition("e_negative", true)
                         end
-                    }))
-                end
+
+                        return true
+                    end
+                }))
+                local created_joker = true
+                G.E_MANAGER:add_event(Event({
+                    func = function()
+                        local joker_card = SMODS.add_card({ set = 'Joker', key = 'j_smiley' })
+                        if joker_card then
+                            joker_card:set_edition("e_negative", true)
+                        end
+
+                        return true
+                    end
+                }))
+                local created_joker = true
+                G.E_MANAGER:add_event(Event({
+                    func = function()
+                        local joker_card = SMODS.add_card({ set = 'Joker', key = 'j_smiley' })
+                        if joker_card then
+                            joker_card:set_edition("e_negative", true)
+                        end
+
+                        return true
+                    end
+                }))
+                card.ability.extra.duracion = 42
                 return {
-                    message = created_consumable and localize('k_plus_tarot') or nil
-                }
+                        }
+            elseif (context.other_card:is_face() and card.ability.extra.duracion > 0) then
+                card.ability.extra.duracion = math.max(0, (card.ability.extra.duracion) - 1)
+            elseif (context.other_card:is_face() and card.ability.extra.duracion == 0 and ((G.GAME.pool_flags.bp_poly or false))) then
+                local created_joker = true
+                G.E_MANAGER:add_event(Event({
+                    func = function()
+                        local joker_card = SMODS.add_card({ set = 'Joker', key = 'j_smiley' })
+                        if joker_card then
+                            joker_card:set_edition("e_polychrome", true)
+                        end
+
+                        return true
+                    end
+                }))
+                local created_joker = true
+                G.E_MANAGER:add_event(Event({
+                    func = function()
+                        local joker_card = SMODS.add_card({ set = 'Joker', key = 'j_smiley' })
+                        if joker_card then
+                            joker_card:set_edition("e_polychrome", true)
+                        end
+
+                        return true
+                    end
+                }))
+                local created_joker = true
+                G.E_MANAGER:add_event(Event({
+                    func = function()
+                        local joker_card = SMODS.add_card({ set = 'Joker', key = 'j_smiley' })
+                        if joker_card then
+                            joker_card:set_edition("e_polychrome", true)
+                        end
+
+                        return true
+                    end
+                }))
+                card.ability.extra.duracion = 42
+                return {
+                        }
             end
         end
     end
@@ -2367,7 +2425,7 @@ SMODS.Joker {
         ['name'] = 'Yui',
         ['text'] = {
             [1] = '{X:chips,C:white}Artista DeLasPorotoCards{}',
-            [2] = 'Cuando se juega un {C:attention}par{} de {C:attention}reinas{}',
+            [2] = 'Si la mano contiene un {C:attention}par{} de {C:attention}reinas{}',
             [3] = 'crea 2 cartas {C:spectral}espectrales{}',
             [4] = '{C:attention}Desabilita{} todas las {C:blue}ciegas azules{}'
         }
