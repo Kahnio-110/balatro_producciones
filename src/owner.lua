@@ -468,3 +468,190 @@ SMODS.Back:take_ownership(
     },
     true
 )
+
+SMODS.Challenge:take_ownership(
+    'non_perishable_1',
+    {
+        rules = {
+            custom = {
+                { id = 'all_eternal' },
+            }
+        },
+        restrictions = {
+            banned_cards = {
+                { id = 'j_gros_michel' },
+                { id = 'j_cavendish' },
+                { id = 'j_ice_cream' },
+                { id = 'j_turtle_bean' },
+                { id = 'j_ramen' },
+                { id = 'j_diet_cola' },
+                { id = 'j_selzer' },
+                { id = 'j_popcorn' },
+                { id = 'j_mr_bones' },
+                { id = 'j_invisible' },
+                { id = 'j_luchador' },
+                { id = 'j_bp_food' },
+                { id = 'j_bp_crash' },
+                { id = 'j_bp_pelo' }
+            },
+            banned_other = {
+                { id = 'bl_final_leaf', type = 'blind' },
+            }
+        }
+    },
+    true
+)
+
+SMODS.Challenge:take_ownership(
+    'typecast_1',
+    {
+        rules = {
+            custom = {
+                { id = 'set_eternal_ante',     value = 4 },
+                { id = 'set_joker_slots_ante', value = 0 },
+            }
+        },
+        restrictions = {
+            banned_cards = {
+                { id = 'c_bp_verdugo' },
+                { id = 'v_antimatter' },
+                banned_other = {
+                    { id = 'bl_final_leaf', type = 'blind' },
+                }
+            }
+        }
+    },
+    true
+)
+
+SMODS.Challenge:take_ownership(
+    'fragile_1',
+    {
+        rules = {},
+        jokers = {
+            { id = 'j_oops', eternal = true, negative = true },
+            { id = 'j_oops', eternal = true, negative = true },
+        },
+        restrictions = {
+            banned_cards = {
+                { id = 'j_marble' },
+                { id = 'j_vampire' },
+                { id = 'j_midas_mask' },
+                { id = 'j_certificate' },
+                { id = 'j_bp_civer' },
+                { id = 'j_bp_retard' },
+                { id = 'c_magician' },
+                { id = 'c_empress' },
+                { id = 'c_heirophant' },
+                { id = 'c_chariot' },
+                { id = 'c_devil' },
+                { id = 'c_tower' },
+                { id = 'c_lovers' },
+                { id = 'c_incantation' },
+                { id = 'c_grim' },
+                { id = 'c_familiar' },
+                { id = 'c_bp_cartero' },
+                { id = 'c_bp_loco' },
+                { id = 'c_bp_fantasma' },
+                { id = 'v_magic_trick' },
+                { id = 'v_illusion' },
+                { id = 'v_bp_poptagono' },
+                { id = 'v_bp_poctagono' },
+                {
+                    id = 'p_standard_normal_1',
+                    ids = {
+                        'p_standard_normal_1', 'p_standard_normal_2',
+                        'p_standard_normal_3', 'p_standard_normal_4',
+                        'p_standard_jumbo_1', 'p_standard_jumbo_2',
+                        'p_standard_mega_1', 'p_standard_mega_2' }
+                },
+            },
+            banned_tags = {
+                { id = 'tag_standard' },
+            }
+        },
+        deck = {
+            enhancement = 'm_glass'
+        }
+    },
+    true
+)
+
+SMODS.Challenge:take_ownership(
+    'five_card_1',
+    {
+        rules = {
+            modifiers = {
+                { id = 'discards',    value = 6 },
+                { id = 'hand_size',   value = 5 },
+                { id = 'joker_slots', value = 7 },
+            }
+        },
+        jokers = {
+            { id = 'j_card_sharp' },
+            { id = 'j_joker' },
+        },
+        restrictions = {
+            banned_cards = {
+                { id = 'j_juggler' },
+                { id = 'j_troubadour' },
+                { id = 'j_turtle_bean' },
+                { id = 'j_bp_dego' },
+            }
+        }
+    },
+    true
+)
+
+SMODS.Challenge:take_ownership(
+    'jokerless_1',
+    {
+        rules = {
+            custom = {
+                { id = 'no_shop_jokers' },
+            },
+            modifiers = {
+                { id = 'joker_slots', value = 0 },
+            }
+        },
+        restrictions = {
+            banned_cards = {
+                { id = 'c_judgement' },
+                { id = 'c_wraith' },
+                { id = 'c_soul' },
+                { id = 'c_bp_optico' },
+                { id = 'c_bp_cartero' },
+                { id = 'c_bp_payaso' },
+                { id = 'c_bp_verdugo' },
+                { id = 'c_bp_misterio' },
+                {
+                    id = 'p_standard_normal_1',
+                    ids = {
+                        'p_standard_normal_1', 'p_standard_normal_2',
+                        'p_standard_normal_3', 'p_standard_normal_4',
+                        'p_standard_jumbo_1', 'p_standard_jumbo_2',
+                        'p_standard_mega_1', 'p_standard_mega_2' }
+                },
+                { id = 'v_antimatter' },
+                { id = 'v_bp_poptagono' },
+                { id = 'v_bp_poctagono' },
+            },
+            banned_tags = {
+                { id = 'tag_uncommon' },
+                { id = 'tag_rare' },
+                { id = 'tag_negative' },
+                { id = 'tag_foil' },
+                { id = 'tag_holographic' },
+                { id = 'tag_polychrome' },
+                { id = 'tag_buffoon' },
+                { id = 'tag_top_up' },
+            },
+            banned_other = {
+                { id = 'bl_final_heart', type = 'blind' },
+                { id = 'bl_final_leaf',  type = 'blind' },
+                { id = 'bl_final_acorn', type = 'blind' },
+            }
+        }
+    },
+    true
+)

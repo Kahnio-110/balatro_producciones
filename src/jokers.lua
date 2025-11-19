@@ -1225,7 +1225,7 @@ SMODS.Joker { --New Joker
     rarity = 2,
     blueprint_compat = false,
     pools = { Ratatin = true },
-    eternal_compat = true,
+    eternal_compat = false,
     perishable_compat = true,
     unlocked = true,
     discovered = true,
@@ -1357,7 +1357,7 @@ SMODS.Joker {
         ['name'] = 'Cuadrado muy afamado',
         ['text'] = {
             [1] = 'Crea un {C:common}Comodín Cuadrado{} al salir de la',
-            [2] = '{C:attention}tienda{} si has comprado {C:attention}#2#{} cartas y/o booster',
+            [2] = '{C:attention}tienda{} si has comprado o abierto {C:attention}#2#{} cartas o booster',
             [3] = 'packs en esta el valor aumenta en {C:attention}4{} por cada tienda',
             [4] = '{C:inactive}({}{C:attention}#1#{}{C:inactive} compras restantes){}',
             [5] = ''
